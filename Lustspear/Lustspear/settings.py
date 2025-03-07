@@ -30,15 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 # Application definition
-SITE_ID = 1
 
 INSTALLED_APPS = [
-    'django.contrib.sites',  # Required by allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,25 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    
 ]
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # For Django admin
-    'allauth.account.auth_backends.AuthenticationBackend',  # For allauth
-]
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-            # Optional: 'prompt': 'consent',  # Force re-consent if needed
-        },
-        'OAUTH_PKCE_ENABLED': True,  # Enables PKCE for enhanced security
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -100,17 +77,10 @@ WSGI_APPLICATION = 'Lustspear.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DB_NAME = "lustspear"
-DB_USER = "bharat"
-DB_PASSWORD = "bharat@123"
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
